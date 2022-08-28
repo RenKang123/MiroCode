@@ -47,14 +47,12 @@ void main(void)
   while(1) 
 	{
     WDTR = 0x5A;                // clear watchdog if watchdog enable
-		//if(F_Time_10ms == 1)
+		if(F_Time_10ms == 1)
 		{
 			i++;
 			F_Time_10ms = 0;		
 			ReadAirTempreture();
 			StarHUMIAD();		
-			//UART0respond();
-			//UART2respond();	
 			LED_Task();
 			HumiTestNoWater();
 			if(i % 10 == 0)//100ms
@@ -67,8 +65,7 @@ void main(void)
 			}
 			if(i >= 100)//1s
 			{
-				i = 0;
-				
+				i = 0;				
 				myTimer();
 			}
 		}
